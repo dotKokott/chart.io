@@ -1,0 +1,22 @@
+{
+  "name": "chart.io",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bunx vite dev",
+    "build": "bunx vite build",
+    "preview": "bunx vite preview"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/chart.js": "^4.0.1",
+    "vite": "^7.0.4"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.0"
+  }
+}
