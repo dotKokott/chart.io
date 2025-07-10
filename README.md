@@ -8,7 +8,7 @@ Turn a URL into a beautiful embeddable chart.  Client-side only, built with Bun 
 
 ```html
 <iframe
-  src="https://your-domain/chart.io/index.html?value=75&color=%23f97316&label=Downloads"
+  src="https://dotkokott.github.io/chart.io/index.html?value=75&color=%23f97316&label=Downloads"
   width="300"
   height="40"
   frameborder="0"
@@ -28,7 +28,7 @@ Open the URL directly in a browser to preview the chart.
 | `showLabel`  | `true`  | Set to `false` to hide the label. |
 | `labelColor` | `#000`  | Text color. |
 | `height`     | *iframe height* | Force bar height internally (px) if you can’t set the iframe height. |
-| `chart`      | `progressbar` | Chart type; currently only progress bars are implemented. |
+| `chart`      | *(optional)* | Explicit chart type; omit for progress bars. |
 
 Alias `v` for `value` is also accepted.
 

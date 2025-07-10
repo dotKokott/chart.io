@@ -65,7 +65,8 @@ function drawProgressBar(value: number, steps: number = 100, color: string = "#4
 
 function main() {
   const params = getParams();
-  const chartType = params["progressbar"] !== undefined || params["chart"] === "progressbar" ? "progressbar" : "unsupported";
+  // Default to progressbar unless an explicit chart type is provided
+  const chartType = (params["chart"] as string | undefined) ?? (params["progressbar"] !== undefined ? "progressbar" : "progressbar");
 
   if (chartType === "progressbar") {
     const value = Number(params["value"] ?? params["v"] ?? 50);
