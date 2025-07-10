@@ -41,6 +41,27 @@ Legend:
 - [x] Implement `/png/...` route via Cloudflare Worker redirect to QuickChart
 - [ ] Caching (keyed by URL hash)
 
+### 6B. First-party PNG rendering via Cloudflare Browser Rendering (Puppeteer)
+> Goal: Use headless Chromium inside a Cloudflare Browser Rendering Worker so the **exact same Chart.js code** renders to a PNG. No more visual drift.
+
+- [ ] Research Browser Rendering limits & pricing (1000 free renders/day)  
+  ↳ docs: https://developers.cloudflare.com/browser-rendering/
+- [ ] Create new Worker project (`png-render-worker`) with Puppeteer binding
+- [ ] Share `buildConfig()` from `worker/config.ts` to create an HTML page string that imports Chart.js and renders — no DOM library needed
+- [ ] Implement Worker logic:
+  1. Parse query params → ChartConfig
+  2. Launch browser via `puppeteer.launch(env.MYBROWSER)`
+  3. `page.setContent()` with minimal HTML+canvas, inject script that calls `new Chart()`
+  4. Wait for Chart to finish (`page.waitForFunction('window.renderDone')`)
+  5. `page.screenshot({ type: 'png', omitBackground: true })`
+  6. Cache in KV (key = full URL) for 24h
+  7. Return PNG (`Content-Type: image/png`)
+- [ ] Add Wrangler KV namespace (prod + preview) and bindings in `wrangler.toml`
+- [ ] Local dev & test (`wrangler dev --remote`)
+- [ ] Update GitHub Actions workflow to auto-deploy Browser Rendering Worker (needs CF API token)
+- [ ] Remove QuickChart redirect code once parity confirmed
+- [ ] Update README with new PNG flow & free-tier limits
+
 ## 8. Code Sharing
 - [x] Extract shared `ChartParams` interface to `shared/chartParams.ts` so both browser and Worker use the same definition
 
