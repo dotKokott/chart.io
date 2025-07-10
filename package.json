@@ -6,12 +6,15 @@
   "scripts": {
     "dev": "bunx vite dev",
     "build": "bunx vite build",
-    "preview": "bunx vite preview"
+    "preview": "bunx vite preview",
+    "dev:png": "bunx wrangler dev worker/worker.ts --persist",
+    "deploy:png": "bunx wrangler deploy"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "@types/chart.js": "^4.0.1",
-    "vite": "^7.0.4"
+    "vite": "^7.0.4",
+    "wrangler": "^4.24.0"
   },
   "peerDependencies": {
     "typescript": "^5"
