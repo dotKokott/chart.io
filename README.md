@@ -64,7 +64,7 @@ Need a chart image for Slack, GitHub, Jira etc.? Use the Cloudflare Worker locat
 
 ```bash
 # one-time (if you didn’t install globally)
-npx wrangler login           # opens browser to authorise Cloudflare account
+bunx wrangler login           # opens browser to authorise Cloudflare account
 
 # run the Worker locally (port 8787)
 bun run dev:png
@@ -85,7 +85,7 @@ You can later map a custom route to a domain you control in the Cloudflare dashb
 ### Example embed
 
 ```md
-![progress](https://chartio-png.<your-id>.workers.dev/png/?value=5&steps=10&label={value}/{steps}%20downloads)
+![progress](https://chartio-png.chartio.workers.dev/png/?value=5&steps=10&label={value}/{steps}%20downloads)
 ```
 
 How it works:
