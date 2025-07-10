@@ -8,6 +8,7 @@ export default defineConfig({
       input: {
         main: "index.html",
         eval: "eval.html",
+        png: "png/index.html",
       },
     },
   },

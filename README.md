@@ -95,6 +95,13 @@ How it works:
 
 Because the Worker is tiny and QuickChart handles the heavy lifting, this stays well within Cloudflare’s free tier (100k requests/day).
 
+# After deployment the same base site now supports /png?… which redirects to the Worker.
+
+Example:
+```md
+![progress](https://dotkokott.github.io/chart.io/png/?value=5&steps=10)
+```
+
 ---
 
 Made with ❤️ and Bun.
