@@ -24,7 +24,7 @@ Open the URL directly in a browser to preview the chart.
 | `value`      | `50`    | Current progress (numerator). |
 | `steps`/`total` | `100` | Maximum value (denominator). |
 | `color`      | `#4ade80` | Bar fill color (hex/CSS). |
-| `label`      | auto-calculated `value/steps%` | Text shown in the bar center. |
+| `label`      | auto (`{percent}`) | Custom text; supports `{value}`, `{steps}`, `{percent}` tokens. |
 | `showLabel`  | `true`  | Set to `false` to hide the label. |
 | `labelColor` | `#000`  | Text color. |
 | `height`     | *iframe height* | Force bar height internally (px) if you can’t set the iframe height. |

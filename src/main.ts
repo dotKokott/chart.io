@@ -74,7 +74,13 @@ function main() {
     const color = params["color"] ?? "#4ade80";
     const showLabel = params["showLabel"] !== "false";
     const defaultLabel = `${Math.round((value / steps) * 100)}%`;
-    const labelText = params["label"] ?? defaultLabel;
+    let labelText = params["label"] ?? defaultLabel;
+    // Replace tokens in label: {value}, {steps}, {percent}
+    const percent = Math.round((value / steps) * 100);
+    labelText = labelText
+      .replace(/\{value\}|\{v\}/gi, String(value))
+      .replace(/\{steps\}|\{total\}/gi, String(steps))
+      .replace(/\{percent\}/gi, `${percent}%`);
     const labelColor = params["labelColor"] ?? "#000";
 
     // Optional explicit height param (px)
