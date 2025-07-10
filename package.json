@@ -8,9 +8,12 @@
     "build": "bunx vite build",
     "preview": "bunx vite preview",
     "dev:png": "bunx wrangler dev worker/worker.ts --persist",
-    "deploy:png": "bunx wrangler deploy"
+    "deploy:png": "bunx wrangler deploy",
+    "dev:png-render": "bunx wrangler dev worker/pngRenderWorker.ts --remote",
+    "deploy:png-render": "bunx wrangler deploy --name chartio-png-render --main worker/pngRenderWorker.ts"
   },
   "devDependencies": {
+    "@cloudflare/puppeteer": "^1.0.3",
     "@types/bun": "latest",
     "@types/chart.js": "^4.0.1",
     "vite": "^7.0.4",

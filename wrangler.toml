@@ -1,3 +1,11 @@
 name = "chartio-png"
 main = "worker/worker.ts"
 compatibility_date = "2024-07-10" 
+compatibility_flags = [ "nodejs_compat" ]
+
+# Browser rendering & KV for PNG worker
+browser = { binding = "MYBROWSER" }
+
+kv_namespaces = [
+  { binding = "PNG_CACHE", id = "__png_cache_prod__", preview_id = "__png_cache_dev__" }
+] 
