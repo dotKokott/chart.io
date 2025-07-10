@@ -22,37 +22,20 @@ export function buildConfig(params: Partial<ChartParams>): BuildResult {
     .replace(/\{percent\}/gi, `${percent}%`);
   const labelColor = params.labelColor ?? "#000";
 
-  // Build Chart.js configuration expected by QuickChart
+  // Build QuickChart "progress" chart configuration for a cleaner output
+  const progressRatio = value / steps;
   const chartConfig = {
-    type: "bar",
+    type: "progress",
     data: {
-      labels: [""],
       datasets: [
         {
-          data: [value],
+          data: [progressRatio],
           backgroundColor: color,
-          borderRadius: 4,
-          barPercentage: 1.0,
-          categoryPercentage: 1.0,
         },
       ],
     },
     options: {
-      indexAxis: "y" as const,
-      animation: false,
-      scales: {
-        x: {
-          min: 0,
-          max: steps,
-          display: false,
-        },
-        y: {
-          display: false,
-        },
-      },
       plugins: {
-        legend: { display: false },
-        tooltip: { enabled: false },
         datalabels: {
           display: showLabel,
           color: labelColor,
