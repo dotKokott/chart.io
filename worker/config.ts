@@ -1,15 +1,4 @@
-export interface ChartParams {
-  value?: string;
-  v?: string;
-  steps?: string;
-  total?: string;
-  color?: string;
-  label?: string;
-  showLabel?: string;
-  labelColor?: string;
-  height?: string;
-  width?: string;
-}
+import type { ChartParams } from "../shared/chartParams";
 
 export interface BuildResult {
   chartConfig: Record<string, unknown>;
@@ -17,7 +6,7 @@ export interface BuildResult {
   height: number;
 }
 
-export function buildConfig(params: Record<string, string | undefined>): BuildResult {
+export function buildConfig(params: Partial<ChartParams>): BuildResult {
   // Parse numbers with defaults
   const value = Number(params.value ?? params.v ?? 50);
   const steps = Number(params.steps ?? params.total ?? 100);

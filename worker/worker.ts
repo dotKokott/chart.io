@@ -1,4 +1,5 @@
 import { buildConfig } from "./config";
+import type { ChartParams } from "../shared/chartParams";
 
 export default {
   async fetch(req: Request): Promise<Response> {
@@ -9,9 +10,9 @@ export default {
       return new Response("Not found", { status: 404 });
     }
 
-    const params: Record<string, string | undefined> = {};
+    const params: Partial<ChartParams> = {};
     url.searchParams.forEach((value, key) => {
-      params[key] = value;
+      (params as any)[key] = value;
     });
 
     const { chartConfig, width, height } = buildConfig(params);

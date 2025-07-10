@@ -34,13 +34,15 @@ Legend:
 
 ## 5. Build & Deployment
 - [x] Static build to `/dist`
-- [ ] GitHub Actions: build & push to `gh-pages`
+- [x] GitHub Actions: build & push to `gh-pages`
 - [ ] CDN-friendly cache headers via `.nojekyll` if needed
 
 ## 6. PNG Endpoint (post-MVP)
-- [ ] Spike: render chart to PNG using `@jsdom` + Chart.js, or headless Chromium/Puppeteer
-- [ ] `/png/...` route (could be Edge Function / Cloudflare Worker)
+- [x] Implement `/png/...` route via Cloudflare Worker redirect to QuickChart
 - [ ] Caching (keyed by URL hash)
+
+## 8. Code Sharing
+- [x] Extract shared `ChartParams` interface to `shared/chartParams.ts` so both browser and Worker use the same definition
 
 ## 7. Documentation
 - [ ] Update `README.md` with usage, embed snippet, parameters table

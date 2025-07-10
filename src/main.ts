@@ -1,13 +1,14 @@
 import Chart from "chart.js/auto";
+import type { ChartParams } from "../shared/chartParams";
 
 /* Simple URL param parsing */
-function getParams() {
+function getParams(): ChartParams {
   const params = new URLSearchParams(window.location.search);
-  const out: Record<string, string> = {};
+  const out: Record<string, string> = {} as Record<string, string>;
   for (const [key, value] of params.entries()) {
     out[key] = value;
   }
-  return out;
+  return out as ChartParams;
 }
 
 function drawProgressBar(value: number, steps: number = 100, color: string = "#4ade80", labelText?: string, showLabel: boolean = true, labelColor: string = "#000") {
