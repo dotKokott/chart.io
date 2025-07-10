@@ -22,14 +22,14 @@ export function buildConfig(params: Partial<ChartParams>): BuildResult {
     .replace(/\{percent\}/gi, `${percent}%`);
   const labelColor = params.labelColor ?? "#000";
 
-  // Build QuickChart "progress" chart configuration for a cleaner output
-  const progressRatio = value / steps;
+  // Build QuickChart "progressBar" chart configuration for a cleaner output
+  const percentValue = Math.round((value / steps) * 100);
   const chartConfig = {
     type: "progressBar",
     data: {
       datasets: [
         {
-          data: [progressRatio],
+          data: [percentValue],
           backgroundColor: color,
         },
       ],
