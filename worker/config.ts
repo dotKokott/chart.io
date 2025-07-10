@@ -25,7 +25,7 @@ export function buildConfig(params: Partial<ChartParams>): BuildResult {
   // Build QuickChart "progress" chart configuration for a cleaner output
   const progressRatio = value / steps;
   const chartConfig = {
-    type: "progress",
+    type: "progressBar",
     data: {
       datasets: [
         {
