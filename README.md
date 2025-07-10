@@ -56,4 +56,45 @@ That’s it—merge to `main` and your charts are live!
 
 ---
 
+## PNG endpoint (for static images)
+
+Need a chart image for Slack, GitHub, Jira etc.? Use the Cloudflare Worker located in `worker/` which turns the same query‐string into a PNG via QuickChart.
+
+### Local development
+
+```bash
+# one-time (if you didn’t install globally)
+npx wrangler login           # opens browser to authorise Cloudflare account
+
+# run the Worker locally (port 8787)
+bun run dev:png
+# open http://localhost:8787/png/?value=60&steps=100&label={value}/{steps}
+```
+
+### Deploy to Cloudflare (free)
+
+```bash
+# first deploy – chooses a workers.dev subdomain automatically
+bun run deploy:png
+
+# output → https://chartio-png.<your-id>.workers.dev
+```
+
+You can later map a custom route to a domain you control in the Cloudflare dashboard.
+
+### Example embed
+
+```md
+![progress](https://chartio-png.<your-id>.workers.dev/png/?value=5&steps=10&label={value}/{steps}%20downloads)
+```
+
+How it works:
+1. Worker parses the query params using the shared `ChartParams` interface.
+2. Builds a Chart.js config identical to the iframe version.
+3. Responds with a 302 redirect to QuickChart.io which returns the cached PNG.
+
+Because the Worker is tiny and QuickChart handles the heavy lifting, this stays well within Cloudflare’s free tier (100k requests/day).
+
+---
+
 Made with ❤️ and Bun.
